@@ -11,11 +11,6 @@
 			line-height: 1.5;
 			margin: 0;
 			padding: 0;
-			background-image: url('afternoon-sunny.jpg');
-			background-size: cover;
-			background-position: center;
-			background-repeat: no-repeat;
-			height: 100vh;
 		}
 
 		h1, label, select {
@@ -30,62 +25,61 @@
 			font-size: 16px;
 			padding: 5px 10px;
 			transition: border-color 0.2s ease-in-out;
-			margin-top: 20px;
 		}
 
 		select:focus {
 			border-color: #000; /* Black */
 			outline: none;
 		}
+
+		img {
+			display: block;
+			margin: 20px auto;
+			max-width: 100%;
+		}
 	</style>
 	<script type="text/javascript">
 		function changeImage() {
 			var currentTime = new Date().getHours();
+			var image = document.getElementById('myImage');
 			var weather = document.getElementById('weather').value;
 			if (currentTime >= 6 && currentTime <= 11) {
 				if (weather == 'sunny') {
-					document.body.style.backgroundImage = "url('morning-sunny.jpg')";
+					image.src = 'morning-sunny.jpg';
 				} else if (weather == 'cloudy') {
-					document.body.style.backgroundImage = "url('morning-cloudy.jpg')";
+					image.src = 'morning-cloudy.jpg';
 				} else {
-					document.body.style.backgroundImage = "url('morning-rainy.jpg')";
+					image.src = 'morning-rainy.jpg';
 				}
 			} else if (currentTime >= 12 && currentTime <= 17) {
 				if (weather == 'sunny') {
-					document.body.style.backgroundImage = "url('afternoon-sunny.jpg')";
+					image.src = 'https://moewalls.com/lifestyle/lofi-japanese-style-room-day-time-live-wallpaper/';
 				} else if (weather == 'cloudy') {
-					document.body.style.backgroundImage = "url('afternoon-cloudy.jpg')";
+					image.src = 'afternoon-cloudy.jpg';
 				} else {
-					document.body.style.backgroundImage = "url('afternoon-rainy.jpg')";
+					image.src = 'afternoon-rainy.jpg';
 				}
 			} else {
 				if (weather == 'sunny') {
-					document.body.style.backgroundImage = "https://www.japannakama.co.uk/wp-content/uploads/2021/09/aesthetic-anime-purple-lo-fi-backgrounds.jpg";
+					image.src = 'https://www.japannakama.co.uk/wp-content/uploads/2021/09/aesthetic-anime-purple-lo-fi-backgrounds.jpg';
 				} else if (weather == 'cloudy') {
-					document.body.style.backgroundImage = "url('night-cloudy.jpg')";
+					image.src = 'night-cloudy.jpg';
 				} else {
-					document.body.style.backgroundImage = "url('night-rainy.jpg')";
+					image.src = 'night-rainy.jpg';
 				}
 			}
 		}
 	</script>
 </head>
 <body onload="changeImage()">
-	<div class="container">
-		<h1>Hourly Image and Weather Change</h1>
-		<label for="weather">Select the weather:</label>
-	</div>
+	<h1>Hourly Image and Weather Change</h1>
+	<label for="weather">Select the weather:</label>
 	<select id="weather" onchange="changeImage()">
 		<option value="sunny">Sunny</option>
 		<option value="cloudy">Cloudy</option>
 		<option value="rainy">Rainy</option>
 	</select>
+	<br>
+	<img id="myImage" src="" alt="Image" />
 </body>
 </html>
-
-
-
-
-
-
-	
