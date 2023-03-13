@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hourly Image and Weather Change</title>
+	<style>
+		body {
+			background-color: #f2f2f2; /* Light grey */
+			color: #333; /* Dark grey */
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
+		}
+
+		h1, label, select {
+			color: #333; /* Dark grey */
+		}
+
+		select {
+			background-color: #fff; /* White */
+			border: 2px solid #333; /* Dark grey */
+			border-radius: 5px;
+			color: #333; /* Dark grey */
+			font-size: 16px;
+			padding: 5px 10px;
+			transition: border-color 0.2s ease-in-out;
+		}
+
+		select:focus {
+			border-color: #000; /* Black */
+			outline: none;
+		}
+
+		img {
+			display: block;
+			margin: 20px auto;
+			max-width: 100%;
+		}
+	</style>
+	<script type="text/javascript">
+		function changeImage() {
+			var currentTime = new Date().getHours();
+			var image = document.getElementById('myImage');
+			var weather = document.getElementById('weather').value;
+			if (currentTime >= 6 && currentTime <= 11) {
+				if (weather == 'sunny') {
+					image.src = 'morning-sunny.jpg';
+				} else if (weather == 'cloudy') {
+					image.src = 'morning-cloudy.jpg';
+				} else {
+					image.src = 'morning-rainy.jpg';
+				}
+			} else if (currentTime >= 12 && currentTime <= 17) {
+				if (weather == 'sunny') {
+					image.src = 'https://moewalls.com/lifestyle/lofi-japanese-style-room-day-time-live-wallpaper/';
+				} else if (weather == 'cloudy') {
+					image.src = 'afternoon-cloudy.jpg';
+				} else {
+					image.src = 'afternoon-rainy.jpg';
+				}
+			} else {
+				if (weather == 'sunny') {
+					image.src = 'https://www.japannakama.co.uk/wp-content/uploads/2021/09/aesthetic-anime-purple-lo-fi-backgrounds.jpg';
+				} else if (weather == 'cloudy') {
+					image.src = 'night-cloudy.jpg';
+				} else {
+					image.src = 'night-rainy.jpg';
+				}
+			}
+		}
+	</script>
+</head>
+<body onload="changeImage()">
+	<h1>Hourly Image and Weather Change</h1>
+	<label for="weather">Select the weather:</label>
+	<select id="weather" onchange="changeImage()">
+		<option value="sunny">Sunny</option>
+		<option value="cloudy">Cloudy</option>
+		<option value="rainy">Rainy</option>
+	</select>
+	<br>
+	<img id="myImage" src="" alt="Image" />
+</body>
+</html>
